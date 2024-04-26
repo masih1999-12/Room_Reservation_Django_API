@@ -6,6 +6,7 @@ from django.core.exceptions import ValidationError
 class Room(models.Model):
     name = models.CharField(max_length = 255 , unique = True)
     capacity = models.PositiveSmallIntegerField()
+    is_active = models.BooleanField()
 
 class Reservation(models.Model):
     start = models.TimeField()
