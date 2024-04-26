@@ -7,6 +7,12 @@ class Room(models.Model):
     name = models.CharField(max_length = 255 , unique = True)
     capacity = models.PositiveSmallIntegerField()
     is_active = models.BooleanField()
+    point = models.DecimalField(
+        default = 0 ,
+        max_digits = 3 ,
+        decimal_places = 2 ,
+        validators=[MinValueValidator(0), MaxValueValidator(5)]
+        )
 
 class Reservation(models.Model):
     start = models.TimeField()
@@ -21,9 +27,6 @@ class Reservation(models.Model):
 
 class Comment(models.Model):
     text = models.TextField()
-    reservation = models.ForeignKey(to = Reservation , on_delete = models.CASCADE)
-    
-class Point(models.Model):
     point = models.PositiveSmallIntegerField(
         validators=[MinValueValidator(0), MaxValueValidator(5)]
         )

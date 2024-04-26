@@ -16,3 +16,11 @@ class Team(models.Model):
     leader = models.ForeignKey(to=CustomUser , on_delete = models.PROTECT , related_name = 'leader')
     def __str__(self) -> str:
         return self.name
+    
+    def save(self, force_insert: bool = ..., force_update: bool = ..., using: str | None = ..., update_fields: Iterable[str] | None = ...) -> None:
+        r = super().save(force_insert, force_update, using, update_fields)
+        self.members.filter(pk = self.leader.pk).remove()
+        return r
+    @property
+    def count_of_members(self):
+        return self.members.count()+1
