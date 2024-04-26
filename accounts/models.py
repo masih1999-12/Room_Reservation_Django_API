@@ -7,6 +7,8 @@ class CustomUser(AbstractUser):
     profile_image = models.ImageField(null=True , blank=True)
     phone = models.CharField(max_length = 11)
 
+    def __str__(self) -> str:
+        return self.first_name + ' ' + self.last_name
 
 class Team(models.Model):
     name = models.CharField(max_length = 255 , unique = True)
