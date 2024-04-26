@@ -1,10 +1,11 @@
 from django_filters.rest_framework import FilterSet
 
-from .models import Team
+from .models import Room
 
-class TeamFilter(FilterSet):
+class RoomFilter(FilterSet):
     class Meta:
-        model = Team
+        model = Room
         fields = {
             'name': ['contains'],
+            'is_active': ['exact'],
         }
