@@ -11,4 +11,4 @@ class TeamsSerializer(serializers.ModelSerializer):
     leader = CustomUserSerializer()
     class Meta:
         model = Team
-        fields = ['id','name' ,'members' ,'leader']
+        fields = ['id','name' ,'members' ,'leader' , 'count_of_members' ]
