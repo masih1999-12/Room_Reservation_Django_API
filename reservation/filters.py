@@ -1,6 +1,6 @@
 from django_filters.rest_framework import FilterSet
 
-from .models import Room ,Reservation
+from .models import Room ,Reservation ,Comment
 
 class RoomFilter(FilterSet):
     class Meta:
@@ -16,7 +16,13 @@ class ReservationFilter(FilterSet):
         fields = {
             'room__name': ['contains'],
             'team__name': ['contains'],
-            'date':['exact'],
-            'date':['gte'],
-            'date':['lte'],
+            'date':['exact' , 'gte' ,'lte'],
+        }
+        
+class CommentFilter(FilterSet):
+    class Meta:
+        model = Comment
+        fields = {
+            'reservation__room__name': ['contains'],
+            'reservation__date':['exact' ,'gte' ,'lte'],
         }
