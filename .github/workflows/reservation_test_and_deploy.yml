@@ -16,7 +16,7 @@ jobs:
             - name: test
               run: python3 manage.py test reservation
     deploy:
-        needs: test
+        needs: reservation_app_test
         runs-on: ubuntu-latest
         steps:
             - name: Get code
