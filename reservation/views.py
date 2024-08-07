@@ -7,7 +7,7 @@ from rest_framework.permissions import IsAuthenticated
 from .models import Room ,Reservation ,Comment
 from .pagination import DefaultPagination
 from .filters import RoomFilter ,ReservationFilter ,CommentFilter
-from .serializers import RoomSerializer ,ReservationSerializer ,CommentSerializer
+from .serializers import RoomSerializer ,ReservationSerializer ,CommentSerializer , RoomReservasionSerializer
 
 class ShowRoomsApiView(
                 viewsets.GenericViewSet ,
@@ -72,3 +72,16 @@ class MyCommentsApiView(
         context = super().get_serializer_context()
         context['user'] = self.request.user
         return context
+
+class FreeTimesForGivenRoom(
+            viewsets.GenericViewSet ,
+            mixins.ListModelMixin ,
+            mixins.CreateModelMixin ,
+            ):
+    pagination_class = DefaultPagination
+    # filter_backends = [DjangoFilterBackend, SearchFilter, OrderingFilter]
+    # filterset_class = ReservationFilter
+    # search_fields = ['room__name' , 'team__name']
+    # ordering_fields = ['room__name' , 'date' , 'start' , 'end']
+    permission_classes = [IsAuthenticated]
+    serializer_class = ...

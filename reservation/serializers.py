@@ -56,3 +56,7 @@ class CommentSerializer(serializers.ModelSerializer):
         
         return validated_data
         
+class RoomReservasionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Room
+        fields = ['id','name','capacity']
