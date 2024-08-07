@@ -84,5 +84,5 @@ class FreeTimesForGivenRoom(
     # filterset_class = ReservationFilter
     # search_fields = ['room__name' , 'team__name']
     # ordering_fields = ['room__name' , 'date' , 'start' , 'end']
-#     permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated]
     serializer_class = ...

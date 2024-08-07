@@ -1,5 +1,5 @@
 name: reservation_app_test
-on: push
+on: workflow_dispatch
 jobs:
     test:
         runs-on: ubuntu-latest
