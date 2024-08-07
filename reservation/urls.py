@@ -4,7 +4,7 @@ from .views import ShowRoomsApiView ,ShowFinishedReservationsApiView ,ShowReserv
 
 router = DefaultRouter()
 
-router.register('rooms',ShowRoomsApiView , basename='rooms')
+router.register('rooms',ShowRoomsApiView , basename='room-list')
 router.register('finished_reservations',ShowFinishedReservationsApiView , basename='finished_reservations')
 router.register('reservations',ShowReservationsApiView , basename='reservations')
 

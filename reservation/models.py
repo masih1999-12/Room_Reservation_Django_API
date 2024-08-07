@@ -6,7 +6,7 @@ from django.core.exceptions import ValidationError
 class Room(models.Model):
     name = models.CharField(max_length = 255 , unique = True)
     capacity = models.PositiveSmallIntegerField()
-    is_active = models.BooleanField()
+    is_active = models.BooleanField(default=True)
     point = models.DecimalField(
         default = 0 ,
         max_digits = 3 ,

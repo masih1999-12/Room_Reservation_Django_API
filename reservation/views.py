@@ -12,11 +12,12 @@ from .serializers import RoomSerializer ,ReservationSerializer ,CommentSerialize
 class ShowRoomsApiView(
                 viewsets.GenericViewSet ,
                 mixins.ListModelMixin ,
+                mixins.CreateModelMixin ,
                 ):
         pagination_class = DefaultPagination
         filter_backends = [DjangoFilterBackend, SearchFilter, OrderingFilter]
         filterset_class = RoomFilter
-        permission_classes = [IsAuthenticated]
+        # permission_classes = [IsAuthenticated]
         search_fields = ['name']
         ordering_fields = ['name' , 'capacity']
         serializer_class = RoomSerializer
@@ -30,7 +31,7 @@ class ShowFinishedReservationsApiView(
     pagination_class = DefaultPagination
     filter_backends = [DjangoFilterBackend, SearchFilter, OrderingFilter]
     filterset_class = ReservationFilter
-    permission_classes = [IsAuthenticated]
+#     permission_classes = [IsAuthenticated]
     search_fields = ['room__name' , 'team__name']
     ordering_fields = ['room__name' , 'date']
     serializer_class = ReservationSerializer
@@ -45,7 +46,7 @@ class ShowReservationsApiView(
     pagination_class = DefaultPagination
     filter_backends = [DjangoFilterBackend, SearchFilter, OrderingFilter]
     filterset_class = ReservationFilter
-    permission_classes = [IsAuthenticated]
+#     permission_classes = [IsAuthenticated]
     search_fields = ['room__name' , 'team__name']
     ordering_fields = ['room__name' , 'date' , 'start' , 'end']
     serializer_class = ReservationSerializer
@@ -62,7 +63,7 @@ class MyCommentsApiView(
     pagination_class = DefaultPagination
     filter_backends = [DjangoFilterBackend, SearchFilter, OrderingFilter]
     filterset_class = CommentFilter
-    permission_classes = [IsAuthenticated]
+#     permission_classes = [IsAuthenticated]
     search_fields = ['reservation__room__name' , 'reservation__team__name']
     ordering_fields = ['point' , 'reservation__room__name' , 'reservation__team__name']
     serializer_class = CommentSerializer
@@ -83,5 +84,5 @@ class FreeTimesForGivenRoom(
     # filterset_class = ReservationFilter
     # search_fields = ['room__name' , 'team__name']
     # ordering_fields = ['room__name' , 'date' , 'start' , 'end']
-    permission_classes = [IsAuthenticated]
+#     permission_classes = [IsAuthenticated]
     serializer_class = ...
