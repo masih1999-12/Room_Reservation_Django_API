@@ -20,6 +20,6 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - name: Get code
-              run: echo "${{ toJson(github) }}"
-              run: echo "deploy"
-              run: echo "deploy"
+              run: |
+                echo "${{ toJson(github) }}"
+                echo "deploy"
